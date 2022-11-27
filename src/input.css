@@ -7,3 +7,5 @@
 		@apply bg-[#5cb85c] px-[5px] py-[3px] rounded-md text-white
 	}
 }
+
+/* npx tailwindcss -i ./src/input.css -o ./src/output.css --watch */
