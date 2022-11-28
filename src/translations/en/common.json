@@ -1,0 +1,13 @@
+{
+	"welcome": {
+		"title": "Welcome to {{framework}}",
+		"intro": "To get started, edit <1><0></0></1> and save to reload."
+	},
+	"form": {
+		"name": "Full name",
+		"phone": "Phone number",
+		"job": "Job",
+		"message": "Your Message",
+		"submit": "Submit"
+	}
+}

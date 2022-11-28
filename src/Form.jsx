@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import "./style.css";
-export default function Form() {
+import { withTranslation, Trans, useTranslation } from "react-i18next";
 
+function Form() {
+  const {t} = useTranslation('translation');
+  
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
@@ -21,7 +24,7 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-style-1">
-          <label>Full Name <span className="required">*</span></label>
+          <label>{t("form.name", { framework: "react-i18next" })} <span className="required">*</span></label>
           <input type="text" className="field-long"
             {...register("name", {required: 'Không được bỏ trống', maxLength: 80})}
           />
@@ -36,7 +39,7 @@ export default function Form() {
           />
           {errors.email && <span className="err">{errors.email.message}</span>}
 
-          <label>Phone number <span className="required">*</span></label>
+          <label>{t("form.phone", { framework: "react-i18next" })} <span className="required">*</span></label>
           <input type="text" className="field-long" 
             {...register("phoneNumber", {required: 'Không được bỏ trống', 
             minLength: {value: 8, message: 'Độ dài 8 đến 12'}, 
@@ -45,16 +48,18 @@ export default function Form() {
           />
           {errors.phoneNumber && <span className="err">{errors.phoneNumber.message}</span>}
 
-          <label>Subject</label>
+          <label>{t("form.job", { framework: "react-i18next" })}</label>
           <select className="field-select">
-            <option value="Advertise">Advertise</option>
-            <option value="Partnership">Partnership</option>
-            <option value="General Question">General</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Developer">Developer</option>
           </select>
-          <label>Your Message <span className="required">*</span></label>
+          <label>{t("form.message", { framework: "react-i18next" })} <span className="required">*</span></label>
           <textarea id="field5" className="field-long field-textarea"></textarea>
-          <input type="submit" value="Submit" />
+          <input type="submit" value={t("form.submit", { framework: "react-i18next" })} />
       </div>
     </form>
   );
 }
+
+export default withTranslation("common")(Form);
