@@ -64,6 +64,7 @@ select{
 }
 .form-style-1 .field-textarea{
 	height: 100px;
+	resize: none;
 }
 .form-style-1 input[type=submit], .form-style-1 input[type=button]{
 	background: #4B99AD;

@@ -7,6 +7,11 @@
 		"name": "Họ tên",
 		"phone": "Số điện thoại",
 		"job": "Công việc",
+		"jobs": {
+			"doctor": "Bác sĩ",
+			"teacher": "Giáo viên",
+			"developer": "Lập trình viên"
+		},
 		"message": "Ghi chú",
 		"submit": "Nộp"
 	}

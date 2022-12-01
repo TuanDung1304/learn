@@ -7,14 +7,13 @@ function Post() {
   axios.post(url, {
     "name": "morpheus",
     "job": "leader"
-})
+  })
   .then(function (response) {
     console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
   });
-  
   return (
 	<div>Post</div>
   )

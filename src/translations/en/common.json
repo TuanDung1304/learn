@@ -7,6 +7,11 @@
 		"name": "Full name",
 		"phone": "Phone number",
 		"job": "Job",
+		"jobs": {
+			"doctor": "Doctor",
+			"teacher": "Teacher",
+			"developer": "Developer"
+		},
 		"message": "Your Message",
 		"submit": "Submit"
 	}

@@ -5,10 +5,10 @@ import { withTranslation, Trans, useTranslation } from "react-i18next";
 function Form() {
   const {t} = useTranslation('translation');
   
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors, } } = useForm({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
-    defaultValues: {/*name: 'Tuan Dung'*/},
+    defaultValues: {name: 'Tuan Dung'},
     resolver: undefined,
     context: undefined,
     criteriaMode: "firstError",
@@ -26,9 +26,9 @@ function Form() {
       <div className="form-style-1">
           <label>{t("form.name", { framework: "react-i18next" })} <span className="required">*</span></label>
           <input type="text" className="field-long"
-            {...register("name", {required: 'Không được bỏ trống', maxLength: 80})}
+            {...register("name", {required: 'Không được bỏ trống', maxLength: 80, pattern: {value: /^[a-zA-Z ]{2,30}$/, message: 'Không đúng định dạng'}})}
           />
-          {errors.name && <span className="err">{errors.name.message}</span>}
+          {errors.name && <span className="err">{errors.name.types}</span>}
 
           <label>Email <span className="required">*</span></label>
           <input type="email" className="field-long"
@@ -42,17 +42,18 @@ function Form() {
           <label>{t("form.phone", { framework: "react-i18next" })} <span className="required">*</span></label>
           <input type="text" className="field-long" 
             {...register("phoneNumber", {required: 'Không được bỏ trống', 
+            pattern: {value: /^\d+$/, message: 'Chỉ nhập sô'},
             minLength: {value: 8, message: 'Độ dài 8 đến 12'}, 
             maxLength: {value: 12, message: 'Độ dài 8 đến 12'}, 
-            pattern: {value: /\d+/, message: 'Chỉ nhập sô'}})}
+            })}
           />
           {errors.phoneNumber && <span className="err">{errors.phoneNumber.message}</span>}
 
           <label>{t("form.job", { framework: "react-i18next" })}</label>
-          <select className="field-select">
-            <option value="Doctor">Doctor</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Developer">Developer</option>
+          <select  className="field-select"> 
+            <option value="Doctor">{t("form.jobs.doctor", { framework: "react-i18next" })}</option>
+            <option value="Teacher">{t("form.jobs.teacher", { framework: "react-i18next" })}</option>
+            <option value="Developer">{t("form.jobs.developer", { framework: "react-i18next" })}</option>
           </select>
           <label>{t("form.message", { framework: "react-i18next" })} <span className="required">*</span></label>
           <textarea id="field5" className="field-long field-textarea"></textarea>

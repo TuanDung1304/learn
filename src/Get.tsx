@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+interface IPost {
+  userId: number,
+  id: number,
+  title: string,
+  body: string
+}
+
 function Get() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
+  console.log(posts)
   const url = "https://jsonplaceholder.typicode.com/posts";
   useEffect(() => {
     const getPosts = async () => {
-      const { data: res } = await axios.get(url);
+      const { data: res } = await axios.get<IPost[]>(url);
       setPosts(res);
     };
     getPosts();
@@ -34,14 +42,12 @@ function Get() {
     console.log(multiPosts, singlePost);
   });
 
-
-  
   return (
     <div className="max-w-3xl mx-auto">
       <h2 className="text-2xl text-red-400">
         There are {posts.length} posts in the database
       </h2>
-      <table className="border-collapse">
+      <table className="border-collapse"> 
         <thead className="border border-t-0 border-l-0 border-r-0 border-b-neutral-700">
           <tr className="h-12">
             <th className="text-left w-20">ID</th>
